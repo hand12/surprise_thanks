@@ -1,0 +1,19 @@
+.display_content
+	.section_top
+		.section_content
+			.section_title
+				| 投稿
+	.section_main
+		.section_post_surprise_thanks
+			.form_panel
+				= form_for @thank do |f|
+					.input_component
+						= f.label :title, "タイトル"
+						= f.text_field :title, placeholder: "感謝のタイトルを入力してください"
+					.input_component
+						= f.label :image
+						= f.file_field :image
+					.input_component
+						= f.label :episode, "エピソード"
+						= f.text_area :episode
+					= f.submit "投稿する"

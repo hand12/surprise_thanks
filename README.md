@@ -1,24 +1,40 @@
-# README
+#SurpriseThanks
+##感謝を投稿するアプリ
+Railsの練習教材用アプリ
+写真とエピソードを投稿する
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##モデル
+###SuprpriseThankモデル
+- has_many :comments
+- belongs_to :user
+- belongs_to :group
 
-Things you may want to cover:
+- title: string, null: false
+- image: string
+- episode: text, null: false
 
-* Ruby version
+###Commentモデル
+- belongs_to :surprise_thank
+- belongs_to :user
 
-* System dependencies
+- text: text, null: false
 
-* Configuration
+###Userモデル
+- has_many :surprise_thanks
+- has_many :comments
+- has_many :group, through: users_groups
 
-* Database creation
+- name: string, null: false
+- handle_name: string, null: false
+- devises_columns
 
-* Database initialization
+###Groupモデル
+- has_many :users, through :users_groups
+- name: strig, null: false
 
-* How to run the test suite
+###UsersGroupsモデル
+- belongs_to :user
+- belongs_to :group
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...

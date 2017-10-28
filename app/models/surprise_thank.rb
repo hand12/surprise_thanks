@@ -1,0 +1,2 @@
+class SurpriseThank < ApplicationRecord
+end
