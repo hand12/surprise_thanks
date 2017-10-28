@@ -2,18 +2,23 @@
 	.section_top
 		.section_content
 			.section_title
-				| 投稿
+				| あなたの感謝を教えてください。
 	.section_main
 		.section_post_surprise_thanks
 			.form_panel
 				= form_for @thank do |f|
-					.input_component
+					.title_form
 						= f.label :title, "タイトル"
-						= f.text_field :title, placeholder: "感謝のタイトルを入力してください"
-					.input_component
+						= f.text_field :title
+					.user_form
+						label for="user_name" To
+						input type="text" id="user_name"
+						| さん
+					.image_form
 						= f.label :image
+							i.fa.fa-picture-o aria-hidden="true"
 						= f.file_field :image
-					.input_component
+					.episode_form
 						= f.label :episode, "エピソード"
-						= f.text_area :episode
+						= f.text_area :episode, cols: 5
 					= f.submit "投稿する"
