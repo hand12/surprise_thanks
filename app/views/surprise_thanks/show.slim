@@ -6,7 +6,7 @@
 	.section_main
 		.surprise_thanks_card_content
 			.surprise_thanks_card
-				= render partial: "thank"
+				= render partial: "thank", locals: { thank: @thank }
 
 	.section_comment
 		.comments
@@ -15,7 +15,7 @@
 			= render partial: "comment"
 			= render partial: "comment"
 		.comment_post_form.comments
-			= form_for @thank do |f|
+			= form_for @hoge do |f|
 				.comment
 					.comment_user
 						= image_tag "https://pbs.twimg.com/profile_images/678123564529094656/oBDHgr1n.jpg"

@@ -41,8 +41,8 @@ $background-light-gray: #F5F5F5;
 		background: white;
 		box-sizing: border-box;
 		width: 500px;
-		height: 300px;
-		padding: 50px;
+		height: 350px;
+		padding: 30px;
 		filter: drop-shadow(0 2px 2px #777);
 		border-radius: 2.5px;
 		white-space: pre-wrap;
@@ -50,7 +50,7 @@ $background-light-gray: #F5F5F5;
 			pointer-events: auto;
 			font-size: 24px;
 			font-weight: bold;
-			margin-bottom: 30px;
+			margin-bottom: 15px;
 			@include center_border_bottom_gradi(100%, 1px);
 			a {
 				color: $text_color;
@@ -63,16 +63,55 @@ $background-light-gray: #F5F5F5;
 		}
 		.thank_body {
 			overflow: hidden;
-			height: 150px;
+			height: 240px;
 			.thank_to_user {
 				font-weight: bold;
 				margin-bottom: 10px;
 			}
+			.thank_image {
+				position: relative;
+				text-align: center;
+				margin: 0 auto;
+				width: 300px;
+				height: 200px;
+				img {
+					object-fit: cover;
+					width: inherit;
+					height: inherit;
+				}
+				&:before {
+					content: '';
+					width: 0;
+					height: 0;
+					transform: rotate(45deg);
+					position: absolute;
+					top: -20px;
+					right: -20px;
+					border: 15px solid transparent;
+					border-bottom: 15px solid white;
+					filter: drop-shadow(1px -1px 1px #ccc);
+				}
+				&:after {
+					content: '';
+					width: 0;
+					height: 0;
+					transform: rotate(225deg);
+					position: absolute;
+					bottom: -20px;
+					left: -20px;
+					border: 15px solid transparent;
+					border-bottom: 15px solid white;
+					filter: drop-shadow(1px -1px 1px #ccc);
+				}
+			}
 			.thank_text {
-				line-height: 30px;
-				border-bottom: 1px dashed lighten($text_color, 50);
-				display: inline;
-				padding-bottom: 5px;
+				padding: 10px;
+				p {
+					line-height: 14px;
+					display: inline;
+					border-bottom: 1px dashed lighten($text_color, 50);
+					padding-bottom: 5px;
+				}
 			}
 		}
 		&:after {

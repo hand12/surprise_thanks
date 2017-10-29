@@ -1,9 +1,11 @@
 class SurpriseThanksController < ApplicationController
 	def index
+		@thanks = SurpriseThank.order(created_at: 'DESC')
 	end
 
 	def show
-		@thank = SurpriseThank.new
+		@thank = SurpriseThank.find(params[:id])
+		@hoge = SurpriseThank.new
 	end
 
 	def new
@@ -21,6 +23,6 @@ class SurpriseThanksController < ApplicationController
 	private
 
 	def thank_params
-		params.require(:surprise_thank).permit(:title, :image, :episode)
+		params.require(:surprise_thank).permit(:title, :image, :episode, :dear_name)
 	end
 end
