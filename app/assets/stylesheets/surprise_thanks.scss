@@ -34,6 +34,74 @@ $background-light-gray: #F5F5F5;
 	}
 }
 
+@mixin thank_card() {
+	.thank_card {
+		margin: 0 50px;
+		position: relative;
+		background: white;
+		box-sizing: border-box;
+		width: 500px;
+		height: 300px;
+		padding: 50px;
+		filter: drop-shadow(0 2px 2px #777);
+		border-radius: 2.5px;
+		white-space: pre-wrap;
+		.thank_header {
+			pointer-events: auto;
+			font-size: 24px;
+			font-weight: bold;
+			margin-bottom: 30px;
+			@include center_border_bottom_gradi(100%, 1px);
+			a {
+				color: $text_color;
+				cursor: pointer;
+				transition: 0.2s;
+				&:hover {
+					color: $main_color;
+				}
+			}
+		}
+		.thank_body {
+			overflow: hidden;
+			height: 150px;
+			.thank_to_user {
+				font-weight: bold;
+				margin-bottom: 10px;
+			}
+			.thank_text {
+				line-height: 30px;
+				border-bottom: 1px dashed lighten($text_color, 50);
+				display: inline;
+				padding-bottom: 5px;
+			}
+		}
+		&:after {
+			content: '';
+			display: block;
+			width: 0;
+			height: 0;
+			position: absolute;
+			bottom: -40px;
+			left: 0;
+			right: 0;
+			margin: auto;
+			border-top: 40px solid white;
+			border-right: 40px solid transparent;
+			border-left: 40px solid transparent;
+		}
+	}
+}
+
+@mixin thank_card_date() {
+	.thank_date {
+		color: lighten($text_color, 30);
+		text-align: right;
+		font-size: 12px;
+		margin-top: 10px;
+		margin-right: 50px;
+	}
+}
+
 body {
 	margin: 0;
 	color: $text_color;
@@ -67,6 +135,25 @@ a {
 		color: $main_color;
 	}
 }
+
+.alert {
+	z-index: 3;
+	position: fixed;
+	background: $main_color;
+	color: white;
+	width: 100vw;
+	padding: 10px;
+	text-align: center;
+}
+.notice {
+	z-index: 3;
+	position: fixed;
+	background: $sub_color;
+	color: white;
+	width: 100vw;
+	padding: 10px;
+	text-align: center;
+}
 #header {
 	position: fixed;
 	width: 100%;
@@ -92,10 +179,13 @@ a {
 				padding: 10px;
 				font-family: 'Pacifico', cursive;
 				font-weight: bold;
-				transition: 0.2s;
-				&:hover {
-					color: $main_color;
-					cursor: pointer;
+				a {
+					transition: 0.2s;
+					color: $text_color;
+					&:hover {
+						color: $main_color;
+						cursor: pointer;
+					}
 				}
 			}
 		}
@@ -217,16 +307,13 @@ a {
 .section_main {
 	width: 100%;
 	height: 100%;
-	font-size: 0;
 	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 	.section_my_menu {
-		position: absolute;
-		top: 0;
-		left: 0;
 		width: 400px;
 		height: 100%;
-		font-size: 16px;
-		box-shadow: 1px 1px 8px -1px #999;
 		background: linear-gradient(135deg, $main_color, $my_menu_background_gradi_color);
 		display: flex;
 		flex-direction: column;
@@ -288,10 +375,6 @@ a {
 		}
 	}
 	.section_time_line {
-		position: absolute;
-		top: 0;
-		right: 0;
-		z-index: -1;
 		width: calc(100vw - 400px);
 		height: 100%;
 		font-size: 16px;
@@ -300,62 +383,12 @@ a {
 		padding: 50px;
 		box-sizing: border-box;
 		background: $background-light-gray;
+		box-shadow: 2px 2px 16px #999 inset;
 		.thank_content { 
 			display: inline-block;
 			white-space: normal;
-			.thank_card {
-				margin: 0 50px;
-				position: relative;
-				background: white;
-				box-sizing: border-box;
-				width: 500px;
-				height: 300px;
-				padding: 50px;
-				filter: drop-shadow(0 2px 2px #777);
-				border-radius: 2.5px;
-				white-space: pre-wrap;
-				.thank_header {
-					font-size: 24px;
-					font-weight: bold;
-					margin-bottom: 30px;
-					@include center_border_bottom_gradi(100%, 1px);
-				}
-				.thank_body {
-					overflow: hidden;
-					height: 150px;
-					.thank_to_user {
-						font-weight: bold;
-						margin-bottom: 10px;
-					}
-					.thank_text {
-						line-height: 30px;
-						border-bottom: 1px dashed lighten($text_color, 50);
-						display: inline;
-						padding-bottom: 5px;
-					}
-				}
-				&:after {
-					content: '';
-					display: block;
-					width: 0;
-					height: 0;
-					position: absolute;
-					bottom: -40px;
-					left: 0;
-					right: 0;
-					margin: auto;
-					border-top: 40px solid white;
-					border-right: 40px solid transparent;
-					border-left: 40px solid transparent;
-				}
-			}
-			.thank_date {
-				color: lighten($text_color, 30);
-				text-align: right;
-				font-size: 12px;
-				margin-top: 10px;
-				margin-right: 50px;
-			}
+			@include thank_card();
+			@include thank_card_date();
 			.thank_user {
 				text-align: center;
 				margin-top: 50px;
@@ -445,6 +478,7 @@ a {
 				}
 				input[type="text"] {
 					font-size: 20px;
+					color: $text_color;
 					font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
 					display: inline-block;
 					width: 30%;
@@ -508,56 +542,8 @@ a {
 			min-width: 600px;
 			margin: 0 auto;
 			.thank_content { 
-				.thank_card {
-					position: relative;
-					background: white;
-					box-sizing: border-box;
-					width: inherit;
-					height: 300px;
-					padding: 50px;
-					filter: drop-shadow(0 2px 2px #777);
-					border-radius: 2.5px;
-					.thank_header {
-						font-size: 24px;
-						font-weight: bold;
-						margin-bottom: 30px;
-						@include center_border_bottom_gradi(100%, 1px);
-					}
-					.thank_body {
-						overflow: hidden;
-						height: 150px;
-						.thank_to_user {
-							font-weight: bold;
-							margin-bottom: 10px;
-						}
-						.thank_text {
-							line-height: 30px;
-							border-bottom: 1px dashed lighten($text_color, 50);
-							display: inline;
-							padding-bottom: 5px;
-						}
-					}
-					&:after {
-						content: '';
-						display: block;
-						width: 0;
-						height: 0;
-						position: absolute;
-						bottom: -40px;
-						left: 0;
-						right: 0;
-						margin: auto;
-						border-top: 40px solid white;
-						border-right: 40px solid transparent;
-						border-left: 40px solid transparent;
-					}
-				}
-				.thank_date {
-					color: lighten($text_color, 30);
-					text-align: right;
-					font-size: 12px;
-					margin-top: 10px;
-				}
+				@include thank_card();
+				@include thank_card_date();
 				.thank_user {
 					text-align: center;
 					margin-top: 50px;
