@@ -48,7 +48,8 @@ input, button, textarea, select {
   background: none;
   border: none;
   border-radius: 0;
-  outline: none;
+	outline: none;
+	resize: none;
 }
 
 a {
@@ -188,6 +189,12 @@ a {
 	height: calc(100vh - 50px);
 	overflow-y: hidden;
 	overflow-x: scroll;
+}
+.display_content_show_page {
+	padding-top: 50px;
+	width: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 .section_top {
@@ -406,7 +413,7 @@ a {
 		font-size: 16px;
 		background: $background-light-gray;
 		.form_panel {
-			width: 50%;
+			width: 30%;
 			min-width: 500px;
 			margin: 0 auto;
 			padding: 50px;
@@ -462,7 +469,7 @@ a {
 				margin-bottom: 20px;
 				label {
 					display: block;
-					font-size: 24px;
+					font-size: 20px;
 					margin-bottom: 10px;
 				}
 				textarea {
@@ -489,5 +496,238 @@ a {
 				}
 			}
 		}
+	}
+	.surprise_thanks_card_content {
+		font-size: 16px;
+		width: 100%;
+		background: $background-light-gray;
+		padding-top: 50px;
+		padding-bottom: 50px;
+		.surprise_thanks_card {
+			width: 30%;
+			min-width: 600px;
+			margin: 0 auto;
+			.thank_content { 
+				.thank_card {
+					position: relative;
+					background: white;
+					box-sizing: border-box;
+					width: inherit;
+					height: 300px;
+					padding: 50px;
+					filter: drop-shadow(0 2px 2px #777);
+					border-radius: 2.5px;
+					.thank_header {
+						font-size: 24px;
+						font-weight: bold;
+						margin-bottom: 30px;
+						@include center_border_bottom_gradi(100%, 1px);
+					}
+					.thank_body {
+						overflow: hidden;
+						height: 150px;
+						.thank_to_user {
+							font-weight: bold;
+							margin-bottom: 10px;
+						}
+						.thank_text {
+							line-height: 30px;
+							border-bottom: 1px dashed lighten($text_color, 50);
+							display: inline;
+							padding-bottom: 5px;
+						}
+					}
+					&:after {
+						content: '';
+						display: block;
+						width: 0;
+						height: 0;
+						position: absolute;
+						bottom: -40px;
+						left: 0;
+						right: 0;
+						margin: auto;
+						border-top: 40px solid white;
+						border-right: 40px solid transparent;
+						border-left: 40px solid transparent;
+					}
+				}
+				.thank_date {
+					color: lighten($text_color, 30);
+					text-align: right;
+					font-size: 12px;
+					margin-top: 10px;
+				}
+				.thank_user {
+					text-align: center;
+					margin-top: 50px;
+					position: relative;
+					z-index: 1;
+					.thank_user_image {
+						width: 100px;
+						height: 100px;
+						display: inline-block;
+						position: relative;
+						filter: drop-shadow(0 2px 2px #777);
+						img {
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: inherit;
+							height: inherit;
+							object-fit: cover;
+							border-radius: 50%;
+						}
+						&:after {
+							position: absolute;
+							top: -5px;
+							left: -5px;
+							content: '';
+							width: 110px;
+							height: 110px;
+							border-radius: 50%;
+							z-index: -1;
+							background: linear-gradient(135deg, $main_color, $my_menu_background_gradi_color);
+						}
+					}
+					.thank_user_name {
+						font-size: 14px;
+						padding: 5px;
+					}
+				}
+			}
+		}
+	}
+}
+.section_comment {
+	font-size: 16px;
+	width: 100%;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	.comments {
+		width: 30%;
+		min-width: 600px;
+		margin: 0 auto;
+		.comment {
+			margin-bottom: 30px;
+			.comment_user {
+				display: inline-block;
+				margin-right: 50px;
+				img {
+					display: block;
+					width: 75px;
+					height: 75px;
+					object-fit: cover;
+					border-radius: 50%;
+				}
+				.comment_user_name_box {
+					font-size: 12px;
+					padding: 10px;
+					text-align: center;
+					.comment_user_name {
+					}
+					.comment_user_handle_name {
+						font-size: 10px;
+					}
+				}
+			}
+			.comment_text {
+				position: relative;
+				vertical-align: top;
+				display: inline-block;
+				font-size: 14px;
+				line-height: 24px;
+				background: $background-light-gray;
+				border-radius: 2.5px;
+				min-width: 200px;
+				max-width: 400px;
+				padding: 20px;
+				margin-bottom: 30px;
+				&:before {
+					content: '';
+					position: absolute;
+					left: -15px;
+					top: 10px;
+					width: 0;
+					height: 0;
+					border-radius: 50%;
+					transform: rotate(45deg);
+					border-left: 22px solid $background-light-gray;
+					border-right: 22px solid transparent;
+					border-top: 22px solid transparent;
+					border-bottom: 22px solid $background-light-gray;
+				}
+				&:after {
+					content: '';
+					position: absolute;
+					left: -22px;
+					top: 0;
+					width: 0;
+					height: 0;
+					border-radius: 50%;
+					transform: rotate(45deg);
+					border-left: 22px solid white;
+					border-right: 22px solid transparent;
+					border-top: 22px solid transparent;
+					border-bottom: 22px solid white;
+				}
+				.comment_date {
+					font-size: 10px;
+					position: absolute;
+					bottom: -20px;
+					right: 0;
+				}
+				.comment_links {
+					position: absolute;
+					bottom: -20px;
+					left: 0;
+					font-size: 10px;
+					a {
+						color: $text_color;
+						transition: 0.2s;
+						margin-right: 10px;
+						&:hover {
+							color: $main_color;
+						}
+					}
+				}
+				label {
+					display: block;
+					font-size: 12px;
+				}
+				textarea {
+					display: block;
+					width: inherit;
+					height: 100px;
+					margin-bottom: 10px;
+					color: $text_color;
+					font-size: 16px;
+					font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
+					border-bottom: 1px solid lighten($text_color, 30);
+				}
+				input[type="submit"] {
+					color: $text_color;
+					font-size: 12px;
+					font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
+					position: absolute;
+					bottom: 10px;
+					left: 20px;
+					transition: 0.2s;
+					&:hover {
+						color: $main_color;
+						cursor: pointer;
+					}
+				}
+			}
+			.comment_form_textarea {
+				padding-top: 10px;
+				width: 400px;
+			}
+		}
+	}
+	.comment_post_form {
+		margin-top: 100px;
+		padding-top: 30px;
+		border-top: 2px solid lighten($text_color, 30);
 	}
 }

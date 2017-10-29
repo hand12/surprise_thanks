@@ -1,0 +1,125 @@
+.display_content_show_page
+	.section_top
+		.section_content
+			.section_title
+				| 山下さんから長田さんへの感謝
+	.section_main
+		.surprise_thanks_card_content
+			.surprise_thanks_card
+				.thank_content
+					.thank_card
+						.thank_header
+							| 二次会の司会ありがとう！
+						.thank_body
+							.thank_to_user
+								| 長田さんへ
+							.thank_text
+								| 昨日の二次会ありがとうございました。忙しい中スライドまで作ってくださりありがとうございました。
+					.thank_date
+						| 2017年10月27日
+					.thank_user
+						.thank_user_image
+							= image_tag "https://pbs.twimg.com/profile_images/919957605002264577/3v0U4Nem.jpg"
+						.thank_user_name
+							| 山下 悠介
+							| hand12
+
+	.section_comment
+		.comments
+			.comment
+				.comment_user
+					= image_tag "https://pbs.twimg.com/profile_images/678123564529094656/oBDHgr1n.jpg"
+					.comment_user_name_box
+						.comment_user_name
+							| 山田 太郎
+						.comment_user_handle_name
+							| t_yamada
+				.comment_text
+					| 素敵な司会でした！
+					br
+					| 素敵な司会でした！
+					br
+					| 素敵な司会でした！
+					br
+					| 素敵な司会でした！
+					br
+					| 素敵な司会でした！
+					.comment_date
+						| 22:30 2017/10/29
+					.comment_links
+						= link_to "編集する", "#"
+						= link_to "削除する", "#"
+
+
+			.comment
+				.comment_user
+					= image_tag "https://pbs.twimg.com/profile_images/678123564529094656/oBDHgr1n.jpg"
+					.comment_user_name_box
+						.comment_user_name
+							| 山田 太郎
+						.comment_user_handle_name
+							| t_yamada
+				.comment_text
+					| 素敵な司会でした！
+					| 素敵な司会でした！
+					| 素敵な司会でした！
+					| 素敵な司会でした！
+					| 素敵な司会でした！
+					.comment_date
+						| 22:30 2017/10/29
+					.comment_links
+						= link_to "編集する", "#"
+						= link_to "削除する", "#"
+			.comment
+				.comment_user
+					= image_tag "https://pbs.twimg.com/profile_images/678123564529094656/oBDHgr1n.jpg"
+					.comment_user_name_box
+						.comment_user_name
+							| 山田 太郎
+						.comment_user_handle_name
+							| t_yamada
+				.comment_text
+					| 素敵な司会でした！
+					| 素敵な司会でした！
+					| 素敵な司会でした！
+					| 素敵な司会でした！
+					| 素敵な司会でした！
+					.comment_date
+						| 22:30 2017/10/29
+					.comment_links
+						= link_to "編集する", "#"
+						= link_to "削除する", "#"
+			.comment
+				.comment_user
+					= image_tag "https://pbs.twimg.com/profile_images/678123564529094656/oBDHgr1n.jpg"
+					.comment_user_name_box
+						.comment_user_name
+							| 山田 太郎
+						.comment_user_handle_name
+							| t_yamada
+				.comment_text
+					| 素敵な司会でした！
+					| 素敵な司会でした！
+					| 素敵な司会でした！
+					| 素敵な司会でした！
+					| 素敵な司会でした！
+					.comment_date
+						| 22:30 2017/10/29
+					.comment_links
+						= link_to "編集する", "#"
+						= link_to "削除する", "#"
+
+		.comment_post_form.comments
+			= form_for @thank do |f|
+				.comment
+					.comment_user
+						= image_tag "https://pbs.twimg.com/profile_images/678123564529094656/oBDHgr1n.jpg"
+						.comment_user_name_box
+							.comment_user_name
+								| 山田 太郎
+							.comment_user_handle_name
+								| t_yamada
+					.comment_text.comment_form_textarea
+						= f.label :episode, "コメントを入力"
+						= f.text_area :episode
+						= f.submit "コメントする"
