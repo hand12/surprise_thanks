@@ -1,4 +1,4 @@
-.display_content
+.display_content_new_page
 	.section_top
 		.section_content
 			.section_title
@@ -17,7 +17,8 @@
 					.image_form
 						= f.label :image
 							i.fa.fa-picture-o aria-hidden="true"
-						= f.file_field :image
+						= f.file_field :image, { onchange: "previewFile()" }
+					#image_field
 					.episode_form
 						= f.label :episode, "エピソード"
 						= f.text_area :episode, cols: 5
