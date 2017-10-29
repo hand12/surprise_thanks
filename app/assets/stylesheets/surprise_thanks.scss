@@ -141,6 +141,150 @@ $background-light-gray: #F5F5F5;
 	}
 }
 
+@mixin form() {
+	.form_panel {
+		width: 30%;
+		min-width: 500px;
+		margin: 0 auto;
+		padding: 50px;
+		background: white;
+		box-shadow: 0 2px 8px #777;
+		.title_form {
+			@include title_form();
+		}
+		.user_form {
+			font-size: 20px;
+			margin-bottom: 20px;
+			display: inline-block;
+			label {
+				display: inline-block;
+			}
+			input[type="text"] {
+				font-size: 20px;
+				color: $text_color;
+				font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
+				display: inline-block;
+				width: 30%;
+				min-width: 200px;
+				margin: 0 20px;
+				border-bottom: 1px solid lighten($text_color, 50);
+			}
+		}
+		.image_form {
+			margin-left: 20px;
+			display: inline-block;
+			vertical-align: center;
+			label {
+				font-size: 24px;
+				cursor: pointer;
+			}
+			input[type="file"] {
+				display: none;
+			}
+		}
+		#image_field {
+			display: none;
+			position: relative;
+			width: 100%;
+			height: auto;
+			margin: 0 auto;
+			text-align: center;
+			img {
+				width: inherit;
+				object-fit: cover;
+			}
+			&:before {
+				content: '';
+				width: 0;
+				height: 0;
+				transform: rotate(45deg);
+				position: absolute;
+				top: -35px;
+				right: -35px;
+				border: 30px solid transparent;
+				border-bottom: 30px solid white;
+				filter: drop-shadow(2px -2px 2px #999);
+			}
+			&:after {
+				content: '';
+				width: 0;
+				height: 0;
+				transform: rotate(225deg);
+				position: absolute;
+				bottom: -35px;
+				left: -35px;
+				border: 30px solid transparent;
+				border-bottom: 30px solid white;
+				filter: drop-shadow(2px -2px 2px #999);
+			}
+		}
+		.episode_form {
+			margin-top: 10px;
+			margin-bottom: 20px;
+			label {
+				display: block;
+				font-size: 20px;
+				margin-bottom: 10px;
+			}
+			textarea {
+				display: inline;
+				width: 100%;
+				height: 10rem;
+				color: $text_color;
+				font-size: 16px;
+				font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
+				border-bottom: 1px dashed lighten($text_color, 30);
+			}
+		}
+		.name_field {
+			@include title_form();
+		}
+		.handle_name_field {
+			@include title_form();
+		}
+		.email_field {
+			@include title_form();
+		}
+		.password_field {
+			@include title_form();
+		}
+		.confirmation_field {
+			@include title_form();
+		}
+		input[type="submit"] {
+			color: $text_color;
+			font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
+			font-size: 24px;
+			display: block;
+			margin: 0 auto;
+			margin-top: 20px;
+			transition: 0.2s;
+			&:hover {
+				color: $main_color;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+@mixin title_form() {
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	label {
+		display: block;
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+	input[type="text"] {
+		display: block;
+		width: 100%;
+		color: $text_color;
+		font-size: 24px;
+		font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
+		border-bottom: 1px solid lighten($text_color, 50);
+	}
+}
+
 body {
 	margin: 0;
 	color: $text_color;
@@ -492,128 +636,7 @@ a {
 		font-size: 16px;
 		background: $background-light-gray;
 		box-shadow: 0 1px 8px -1px #777 inset;
-		.form_panel {
-			width: 30%;
-			min-width: 500px;
-			margin: 0 auto;
-			padding: 50px;
-			background: white;
-			box-shadow: 0 2px 8px #777;
-			.title_form {
-				margin-bottom: 20px;
-				padding-bottom: 10px;
-				label {
-					display: block;
-					font-size: 20px;
-					margin-bottom: 10px;
-				}
-				input[type="text"] {
-					display: block;
-					width: 100%;
-					color: $text_color;
-					font-size: 24px;
-					font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
-					border-bottom: 1px solid lighten($text_color, 50);
-				}
-			}
-			.user_form {
-				font-size: 20px;
-				margin-bottom: 20px;
-				display: inline-block;
-				label {
-					display: inline-block;
-				}
-				input[type="text"] {
-					font-size: 20px;
-					color: $text_color;
-					font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
-					display: inline-block;
-					width: 30%;
-					min-width: 200px;
-					margin: 0 20px;
-					border-bottom: 1px solid lighten($text_color, 50);
-				}
-			}
-			.image_form {
-				margin-left: 20px;
-				display: inline-block;
-				vertical-align: center;
-				label {
-					font-size: 24px;
-					cursor: pointer;
-				}
-				input[type="file"] {
-					display: none;
-				}
-			}
-			#image_field {
-				display: none;
-				position: relative;
-				width: 100%;
-				height: auto;
-				margin: 0 auto;
-				text-align: center;
-				img {
-					width: inherit;
-					object-fit: cover;
-				}
-				&:before {
-					content: '';
-					width: 0;
-					height: 0;
-					transform: rotate(45deg);
-					position: absolute;
-					top: -35px;
-					right: -35px;
-					border: 30px solid transparent;
-					border-bottom: 30px solid white;
-					filter: drop-shadow(2px -2px 2px #999);
-				}
-				&:after {
-					content: '';
-					width: 0;
-					height: 0;
-					transform: rotate(225deg);
-					position: absolute;
-					bottom: -35px;
-					left: -35px;
-					border: 30px solid transparent;
-					border-bottom: 30px solid white;
-					filter: drop-shadow(2px -2px 2px #999);
-				}
-			}
-			.episode_form {
-				margin-top: 10px;
-				margin-bottom: 20px;
-				label {
-					display: block;
-					font-size: 20px;
-					margin-bottom: 10px;
-				}
-				textarea {
-					display: inline;
-					width: 100%;
-					height: 10rem;
-					color: $text_color;
-					font-size: 16px;
-					font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
-					border-bottom: 1px dashed lighten($text_color, 30);
-				}
-			}
-			input[type="submit"] {
-				color: $text_color;
-				font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
-				font-size: 24px;
-				display: block;
-				margin: 0 auto;
-				margin-top: 20px;
-				transition: 0.2s;
-				&:hover {
-					color: $main_color;
-					cursor: pointer;
-				}
-			}
-		}
+		@include form();
 	}
 	.surprise_thanks_card_content {
 		font-size: 16px;
@@ -667,6 +690,16 @@ a {
 				}
 			}
 		}
+	}
+	.section_new_registration_user {
+		width: 100%;
+		height: 100%;
+		padding-top: 50px;
+		padding-bottom: 50px; 
+		font-size: 16px;
+		background: $background-light-gray;
+		box-shadow: 0 1px 8px -1px #777 inset;
+		@include form();
 	}
 }
 .section_comment {
@@ -799,5 +832,6 @@ a {
 		margin-top: 100px;
 		padding-top: 30px;
 		border-top: 2px solid lighten($text_color, 30);
+		@include form();
 	}
 }

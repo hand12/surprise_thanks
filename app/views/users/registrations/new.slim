@@ -1,0 +1,30 @@
+.display_content_new_page
+	.section_top
+		.section_content
+			.section_title
+				| 新規会員登録
+	.section_main
+		.section_new_registration_user
+			.form_panel
+				= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+					= devise_error_messages!
+					.name_field
+						= f.label :name, "あなたのお名前を入力してください"
+						= f.text_field :name, autofocus: true, placeholder: "山下 悠介"
+					.handle_name_field
+						= f.label :handle_name, "お好きなidを決めてください"
+						= f.text_field :handle_name, placeholder: "hand12.k"
+					.email_field
+						= f.label :email, "ご自身のメールアドレスを入力ください"
+						= f.email_field :email, placeholder: "aaa@gmail.com"
+					.password_field
+						= f.label :password, "お好きなパスワードを入力してください"
+						- if @minimum_password_length
+							em
+								| (#{@minimum_password_length} characters minimum)
+						= f.password_field :password, autocomplete: "off", placeholder: "password"
+					.confirmation_field
+						= f.label :password_confirmation, "ご確認のため、もう一度ご入力してください"
+						= f.password_field :password_confirmation, autocomplete: "off", placeholder: "password"
+					.actions
+						= f.submit "登録する"

@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'dotenv-rails'
 gem 'slim-rails'
 gem 'carrierwave'
+gem 'devise'
 
 
 group :development, :test do
