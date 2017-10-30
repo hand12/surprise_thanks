@@ -8,23 +8,24 @@
 			.form_panel
 				= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
 					= devise_error_messages!
+					.profile_image_field
+						= f.label :profile_image, "プロフィール写真を選択"
+						= f.file_field :profile_image, { onchange: "previewFile()" }
+						#image_field
 					.name_field
 						= f.label :name, "あなたのお名前を入力してください"
-						= f.text_field :name, autofocus: true, placeholder: "山下 悠介"
+						= f.text_field :name, autofocus: true
 					.handle_name_field
-						= f.label :handle_name, "お好きなidを決めてください"
-						= f.text_field :handle_name, placeholder: "hand12.k"
+						= f.label :handle_name, "お好きなidを決めてください（半角英数）"
+						= f.text_field :handle_name
 					.email_field
 						= f.label :email, "ご自身のメールアドレスを入力ください"
 						= f.email_field :email, placeholder: "aaa@gmail.com"
 					.password_field
-						= f.label :password, "お好きなパスワードを入力してください"
-						- if @minimum_password_length
-							em
-								| (#{@minimum_password_length} characters minimum)
-						= f.password_field :password, autocomplete: "off", placeholder: "password"
+						= f.label :password, "お好きなパスワードを入力してください（半角英数6文字以上）"
+						= f.password_field :password, autocomplete: "off"
 					.confirmation_field
 						= f.label :password_confirmation, "ご確認のため、もう一度ご入力してください"
-						= f.password_field :password_confirmation, autocomplete: "off", placeholder: "password"
+						= f.password_field :password_confirmation, autocomplete: "off"
 					.actions
 						= f.submit "登録する"
