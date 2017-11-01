@@ -348,6 +348,25 @@ $background-light-gray: #F5F5F5;
 	}
 }
 
+@mixin flash_message($background_color) {
+	z-index: 3;
+	position: fixed;
+	background: $background_color;
+	color: white;
+	width: 100vw;
+	padding: 10px;
+	text-align: center;
+	animation-name: fadeOut;
+	animation-duration: 3s;
+	animation-timing-function: ease-in;
+	animation-fill-mode: forwards;
+}
+@keyframes fadeOut {
+	0% { opacity: 　1; }
+	90% { opacity: 1; }
+	100% { opacity: 0; display: none; }
+}
+
 body {
 	margin: 0;
 	color: $text_color;
@@ -383,22 +402,10 @@ a {
 }
 
 .alert {
-	z-index: 3;
-	position: fixed;
-	background: $main_color;
-	color: white;
-	width: 100vw;
-	padding: 10px;
-	text-align: center;
+	@include flash_message($main_color);
 }
 .notice {
-	z-index: 3;
-	position: fixed;
-	background: $sub_color;
-	color: white;
-	width: 100vw;
-	padding: 10px;
-	text-align: center;
+	@include flash_message($sub_color);
 }
 #header {
 	position: fixed;
