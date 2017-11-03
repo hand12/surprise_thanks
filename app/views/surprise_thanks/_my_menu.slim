@@ -1,16 +1,16 @@
 .profile_image
-	= image_tag "https://pbs.twimg.com/profile_images/919957605002264577/3v0U4Nem.jpg"
+	= image_tag current_user.profile_image if current_user.profile_image.present?
 .profile_menu_box
 	.profile_name_box
 		span.profile_name
-			| 山下 悠介
+			= current_user.name
 		span.profile_handle_name
-			| hand12
+			= current_user.handle_name
 	ul.profile_menu_lists
 		li.profile_menu_list
 			| 自分が投稿した感謝一覧
 		li.profile_menu_list
 			| 自分あてにきた感謝一覧
 		li.profile_menu_list
-			| 設定を変更する
+			= link_to "プロフィールを変更する", edit_user_registration_path
 	= link_to "感謝を投稿する", new_surprise_thank_path, class: "post_surprise_thanks"

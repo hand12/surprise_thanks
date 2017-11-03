@@ -51,6 +51,9 @@ $background-light-gray: #F5F5F5;
 			font-size: 24px;
 			font-weight: bold;
 			margin-bottom: 15px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
 			@include center_border_bottom_gradi(100%, 1px);
 			a {
 				color: $text_color;
@@ -131,13 +134,19 @@ $background-light-gray: #F5F5F5;
 	}
 }
 
-@mixin thank_card_date() {
-	.thank_date {
+@mixin thank_card_menu() {
+	.thank_menu {
 		color: lighten($text_color, 30);
 		text-align: right;
-		font-size: 12px;
+		font-size: 10px;
 		margin-top: 10px;
 		margin-right: 50px;
+		a {
+			margin-right: 10px;
+		}
+		.thank_date {
+			display: inline-block;
+		}
 	}
 }
 
@@ -363,8 +372,9 @@ $background-light-gray: #F5F5F5;
 }
 @keyframes fadeOut {
 	0% { opacity: 　1; }
-	90% { opacity: 1; }
-	100% { opacity: 0; display: none; }
+	80% { opacity: 1; }
+	99% { opacity: 0; display: none; z-index: 3 }
+	100% { z-index: 0 }
 }
 
 body {
@@ -386,7 +396,12 @@ input, button, textarea, select {
 }
 
 a {
+	color: $text_color;
 	text-decoration: none;
+	transition: 0.2s;
+	&:hover {
+		color: $main_color;
+	}
 }
 
 .link_text {
@@ -449,6 +464,9 @@ a {
 					display: inline-block;
 					padding-right: 10px;
 					transition: 0.2s;
+					a {
+						vertical-align: middle;
+					}
 					&:after {
 						margin-left: 10px;
 						content: '';
@@ -464,6 +482,20 @@ a {
 					&:hover {
 						color: $main_color;
 						cursor: pointer;
+					}
+				}
+				.current_user_box {
+					vertical-align: middle;
+					position: relative;
+					img {
+						position: absolute;
+						top: 0;
+						left: -35px;
+						width: 25px;
+						height: 25px;
+						object-fit: cover;
+						border-radius: 50%;
+						vertical-align: middle;
 					}
 				}
 			}
@@ -647,7 +679,7 @@ a {
 			display: inline-block;
 			white-space: normal;
 			@include thank_card();
-			@include thank_card_date();
+			@include thank_card_menu();
 			.thank_user {
 				text-align: center;
 				margin-top: 50px;
@@ -678,6 +710,17 @@ a {
 						height: inherit;
 						object-fit: cover;
 						border-radius: 50%;
+					}
+					#no_user {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: inherit;
+						height: inherit;
+						object-fit: cover;
+						border-radius: 50%;
+						font-size: 100px;
+						color: white;
 					}
 					&:after {
 						position: absolute;
@@ -720,7 +763,7 @@ a {
 			margin: 0 auto;
 			.thank_content { 
 				@include thank_card();
-				@include thank_card_date();
+				@include thank_card_menu();
 				.thank_user {
 					text-align: center;
 					margin-top: 50px;

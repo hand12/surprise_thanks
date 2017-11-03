@@ -1,0 +1,25 @@
+.display_content_new_page
+	.section_top
+		.section_content
+			.section_title
+				| 投稿の編集。
+	.section_main
+		.section_post_surprise_thanks
+			.form_panel
+				= form_for @thank do |f|
+					.title_form
+						= f.label :title, "タイトル"
+						= f.text_field :title
+					.user_form
+						= f.label :dear_name, "To"
+						= f.text_field :dear_name
+						| さん
+					.image_form
+						= f.label :image
+							i.fa.fa-picture-o aria-hidden="true"
+						= f.file_field :image, { onchange: "previewFile()" }
+					#image_field
+					.episode_form
+						= f.label :episode, "エピソード"
+						= f.text_area :episode, cols: 5
+					= f.submit "投稿する"

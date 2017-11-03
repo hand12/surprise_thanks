@@ -12,11 +12,21 @@
 			- else
 				.thank_text
 					= simple_format(thank.episode)
-	.thank_date
-		= thank.created_at.strftime("%Y年%-m月%d日 %H:%M")
+	.thank_menu
+		- if thank.user == current_user
+			= link_to "編集する", edit_surprise_thank_path(thank)
+			= link_to "削除する", surprise_thank_path(thank), method: :delete, data: { confirm: "削除します。よろしいでしょうか？"}
+		.thank_date
+			= thank.updated_at.strftime("%Y年%-m月%d日 %H:%M")
 	.thank_user
-		.thank_user_image
-			= image_tag "https://pbs.twimg.com/profile_images/919957605002264577/3v0U4Nem.jpg"
-		.thank_user_name
-			| 山下 悠介
-			| hand12
+		- if thank.user.present?
+			.thank_user_image
+				= image_tag thank.user.profile_image if thank.user.profile_image.present?
+			.thank_user_name
+				= thank.user.name
+				= thank.user.handle_name
+		- else
+			.thank_user_image
+				i.fa.fa-user-circle#no_user
+			.thank_user_name
+				| 退会したユーザ

@@ -5,7 +5,15 @@
 				= link_to "Surprise Thanks", root_path
 		#right_box
 			.buttons
-				.button
-					| ログイン
-				.button
-					| 新規登録
+				- if user_signed_in?
+					.button.current_user_box
+						= image_tag current_user.profile_image if current_user.profile_image.present?
+						= current_user.name
+						| さん
+					.button
+						= link_to  "ログアウト", destroy_user_session_path, method: :delete
+				- else
+					.button
+						= link_to "新規登録", new_user_registration_path
+					.button
+						= link_to "ログイン", new_user_session_path
