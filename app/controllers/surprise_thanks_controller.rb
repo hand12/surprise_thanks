@@ -6,7 +6,8 @@ class SurpriseThanksController < ApplicationController
 
 	def show
 		@thank = SurpriseThank.find(params[:id])
-		@hoge = SurpriseThank.new
+		@comment = @thank.comments.build
+		@comments = @thank.comments
 	end
 
 	def new
@@ -36,7 +37,7 @@ class SurpriseThanksController < ApplicationController
 	end
 
 	def destroy
-		thank = SurpriseThank.find(params[:id]).destroy
+		SurpriseThank.find(params[:id]).destroy
 		redirect_to surprise_thanks_path, notice: "投稿を削除しました。"
 	end
 

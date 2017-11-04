@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103080407) do
+ActiveRecord::Schema.define(version: 20171103155834) do
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "text", null: false
+    t.bigint "user_id"
+    t.bigint "surprise_thank_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["surprise_thank_id"], name: "index_comments_on_surprise_thank_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "surprise_thanks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title", null: false

@@ -150,6 +150,68 @@ $background-light-gray: #F5F5F5;
 	}
 }
 
+@mixin thank_user() {
+	.thank_user {
+		text-align: center;
+		margin-top: 50px;
+		position: relative;
+		z-index: 1;
+		&:after {
+			position: absolute;
+			top: 50px;
+			left: 0;
+			content: '';
+			display: block;
+			width: 100%;
+			height: 2px;
+			background: lighten($text_color, 40);
+			z-index: -1;
+		}
+		.thank_user_image {
+			width: 100px;
+			height: 100px;
+			display: inline-block;
+			position: relative;
+			filter: drop-shadow(0 2px 2px #777);
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: inherit;
+				height: inherit;
+				object-fit: cover;
+				border-radius: 50%;
+			}
+			#no_user {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: inherit;
+				height: inherit;
+				object-fit: cover;
+				border-radius: 50%;
+				font-size: 100px;
+				color: white;
+			}
+			&:after {
+				position: absolute;
+				top: -5px;
+				left: -5px;
+				content: '';
+				width: 110px;
+				height: 110px;
+				border-radius: 50%;
+				z-index: -1;
+				background: linear-gradient(135deg, $main_color, $my_menu_background_gradi_color);
+			}
+		}
+		.thank_user_name {
+			font-size: 14px;
+			padding: 5px;
+		}
+	}
+}
+
 @mixin form() {
 	.form_panel {
 		width: 30%;
@@ -487,6 +549,10 @@ a {
 				.current_user_box {
 					vertical-align: middle;
 					position: relative;
+					&:hover {
+						color: $text_color;
+						cursor: default;
+					}
 					img {
 						position: absolute;
 						top: 0;
@@ -601,7 +667,8 @@ a {
 	position: relative;
 	display: flex;
 	flex-direction: row;
-	align-items: center;
+	// align-items: center;
+	overflow: scroll;
 	.section_my_menu {
 		width: 400px;
 		height: 100%;
@@ -680,65 +747,7 @@ a {
 			white-space: normal;
 			@include thank_card();
 			@include thank_card_menu();
-			.thank_user {
-				text-align: center;
-				margin-top: 50px;
-				position: relative;
-				z-index: 1;
-				&:after {
-					position: absolute;
-					top: 50px;
-					left: 0;
-					content: '';
-					display: block;
-					width: 100%;
-					height: 2px;
-					background: lighten($text_color, 40);
-					z-index: -1;
-				}
-				.thank_user_image {
-					width: 100px;
-					height: 100px;
-					display: inline-block;
-					position: relative;
-					filter: drop-shadow(0 2px 2px #777);
-					img {
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: inherit;
-						height: inherit;
-						object-fit: cover;
-						border-radius: 50%;
-					}
-					#no_user {
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: inherit;
-						height: inherit;
-						object-fit: cover;
-						border-radius: 50%;
-						font-size: 100px;
-						color: white;
-					}
-					&:after {
-						position: absolute;
-						top: -5px;
-						left: -5px;
-						content: '';
-						width: 110px;
-						height: 110px;
-						border-radius: 50%;
-						z-index: -1;
-						background: linear-gradient(135deg, $main_color, $my_menu_background_gradi_color);
-					}
-				}
-				.thank_user_name {
-					font-size: 14px;
-					padding: 5px;
-				}
-			}
+			@include thank_user();
 		}
 	}
 	.section_post_surprise_thanks {
@@ -764,41 +773,10 @@ a {
 			.thank_content { 
 				@include thank_card();
 				@include thank_card_menu();
+				@include thank_user();
 				.thank_user {
-					text-align: center;
-					margin-top: 50px;
-					position: relative;
-					z-index: 1;
-					.thank_user_image {
-						width: 100px;
-						height: 100px;
-						display: inline-block;
-						position: relative;
-						filter: drop-shadow(0 2px 2px #777);
-						img {
-							position: absolute;
-							top: 0;
-							left: 0;
-							width: inherit;
-							height: inherit;
-							object-fit: cover;
-							border-radius: 50%;
-						}
-						&:after {
-							position: absolute;
-							top: -5px;
-							left: -5px;
-							content: '';
-							width: 110px;
-							height: 110px;
-							border-radius: 50%;
-							z-index: -1;
-							background: linear-gradient(135deg, $main_color, $my_menu_background_gradi_color);
-						}
-					}
-					.thank_user_name {
-						font-size: 14px;
-						padding: 5px;
+					&:after {
+						display: none;
 					}
 				}
 			}
@@ -859,6 +837,9 @@ a {
 				max-width: 400px;
 				padding: 20px;
 				margin-bottom: 30px;
+				p {
+					margin: 0;
+				}
 				&:before {
 					content: '';
 					position: absolute;

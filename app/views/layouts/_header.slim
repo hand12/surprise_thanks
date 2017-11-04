@@ -11,6 +11,8 @@
 						= current_user.name
 						| さん
 					.button
+						= link_to "感謝を投稿する", new_surprise_thank_path
+					.button
 						= link_to  "ログアウト", destroy_user_session_path, method: :delete
 				- else
 					.button

@@ -10,4 +10,5 @@ class User < ApplicationRecord
 	validates :handle_name, uniqueness: true
 
 	has_many :surprise_thanks
+	has_many :comments, dependent: :delete_all
 end

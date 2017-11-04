@@ -10,12 +10,9 @@
 	.section_main
 		.surprise_thanks_card_content
 			.surprise_thanks_card
-				= render partial: "thank", locals: { thank: @thank }
+				= render partial: "./surprise_thanks/thank", locals: { thank: @thank }
 
 	.section_comment
-		.comments
-			= render partial: "comment", collection: @comments
-
 		.comment_post_form.comments
 			= form_for [@thank, @comment] do |f|
 				.comment
@@ -31,4 +28,4 @@
 								= current_user.handle_name
 					.comment_text.comment_form_textarea
 						= f.text_area :text, placeholder: "コメントを入力"
-						= f.submit "コメントする"
+						= f.submit "修正する"
