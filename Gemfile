@@ -17,6 +17,7 @@ gem 'dotenv-rails'
 gem 'slim-rails'
 gem 'carrierwave'
 gem 'devise'
+gem 'dotenv-rails'
 
 
 group :development, :test do

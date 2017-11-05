@@ -4,9 +4,11 @@ services:
     image: mysql
     ports:
       - "5306:3306"
+    env_file: .env
     environment:
-      - MYSQL_ROOT_PASSWORD=password
+      - .env
   web:
+    env_file: .env
     build: .
     command: bundle exec rails s -p 3003 -b '0.0.0.0'
     volumes:
