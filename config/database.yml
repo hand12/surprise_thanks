@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: myapp_production
-  username: myapp
+  username: <%= ENV['DBUSERNAME'] %>
   password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
+  host: <%= ENV['DATABASE_URL'] %>
