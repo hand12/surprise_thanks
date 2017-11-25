@@ -1,16 +1,12 @@
 version: '3'
 services:
   db:
-    image: mysql
-    ports:
-      - "5306:3306"
-    env_file: .env
     environment:
       - .env
+    image: mysql
   web:
-    env_file: .env
     build: .
-    command: bundle exec rails s -p 3003 -b '0.0.0.0'
+    command: rails s -p 3003 -b '0.0.0.0'
     volumes:
       - .:/myapp
     ports:
